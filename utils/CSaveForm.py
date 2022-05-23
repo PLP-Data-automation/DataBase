@@ -31,6 +31,9 @@ def Dialog( mode : str = 'file' ) -> list:
     if mode == 'file':
         dialog.setFileMode( QtWidgets.QFileDialog.FileMode.ExistingFiles )
         dialog.setNameFilter( "Comma Separated Value (*.csv)" )
+    elif mode == 'db':
+        dialog.setFileMode( QtWidgets.QFileDialog.FileMode.ExistingFiles )
+        dialog.setNameFilter( "Data Base (*.db)" )
     elif mode == 'dir':
         dialog.setFileMode( QtWidgets.QFileDialog.FileMode.Directory )
     dialog.exec()

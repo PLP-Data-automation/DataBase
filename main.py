@@ -9,7 +9,7 @@ Opens a file explorer browser to select valid .csv files.
 The function saves the logs into a .db file.
 
 """
-from DataLog import get_local_path, log_from_files
+from DataBase.DataLog import get_local_path, log_from_files
 import os
 
 LOCAL_PATH = get_local_path( __file__ )
