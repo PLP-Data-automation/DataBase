@@ -16,7 +16,7 @@ import os
 import sqlite3
 import numpy as np
 
-UNNAMED = 'unnammd'
+UNNAMED = 'unnamed'
 
 class CDataBase():
     """
@@ -65,11 +65,18 @@ class CDataBase():
         keycol : str
             Key Index column
         """
-        self.table = table
+        self.table = self._drop_unnamed( table )
         self.path = os.path.join( path, name )
         self.tablename = tablename
         self.keycol = keycol
     
+    def _drop_unnamed( self, table : pandas.DataFrame ):
+        cols = []
+        for col in table.columns:
+            if UNNAMED in col.lower():
+                cols.append( col )
+        return table.drop( columns=cols )
+
     def __enter__( self ):
         self.openDB()
         self.createTable( self.tablename, self.keycol )
