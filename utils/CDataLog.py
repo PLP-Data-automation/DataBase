@@ -12,7 +12,7 @@ CDataLog
 
 """
 
-from utils.CDataBase import CDataBase
+from DataBase.utils.CDataBase import CDataBase
 import pandas
 
 class CDataLog():

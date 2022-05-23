@@ -18,8 +18,8 @@ get_local_path( file : str = __file__ ) -> str
     Returns local file path.
 
 """
-from utils.CSaveForm import Dialog as openDialog
-from utils.CDataLog import CDataLog
+from DataBase.utils.CSaveForm import Dialog as openDialog
+from DataBase.utils.CDataLog import CDataLog
 import os
 import pandas
 
