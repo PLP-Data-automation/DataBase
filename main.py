@@ -1,16 +1,20 @@
-import pandas
-from utils.CDataBase import CDataBase
+"""
+Author: Fuentes Juvera, Luis
+E-mail: luis.fuju@outlook.com
+username: LuisDFJ
+
+Example usage: Data logger using SQLite3
+
+Opens a file explorer browser to select valid .csv files.
+The function saves the logs into a .db file.
+
+"""
+from DataLog import get_local_path, log_from_files
 import os
 
+LOCAL_PATH = get_local_path( __file__ )
 
-LOCAL_PATH = os.path.join( os.path.dirname( os.path.realpath( __file__ ) ), "db" )
-
-df = pandas.read_csv( "TORCEDORAS_SIMPLE.csv" )
-df_2 = df.loc[ df["LEGEND"] == "TORCEDORA+2" ]
-df_4 = df.loc[ df["LEGEND"] == "TORCEDORA+4" ]
-
-with CDataBase( df_2, LOCAL_PATH, tablename="TORCEDORA2" ) as db:
-    db.writeDB()
-
-with CDataBase( df_4, LOCAL_PATH, tablename="TORCEDORA4" ) as db:
-    db.writeDB()
+if __name__ == "__main__":
+    if not os.path.exists( "db" ):
+        os.makedirs( "db" )
+    log_from_files( LOCAL_PATH )
